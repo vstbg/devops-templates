@@ -1,1 +1,1 @@
-# This is a collection of scrpits created during the process of different projects. 
+# This is a collection of scripts and templates created during the process of different projects. 
