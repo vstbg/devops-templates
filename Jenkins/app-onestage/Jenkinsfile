@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+
+    stages{
+        stage('Build') {
+            steps {
+                // GitHub repo code
+                git 'https://github.com/vstbg/jokes-api.git'
+            }
+        }
+    }
+}
