@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages{
+        stage('Dev') {
+            steps {
+                // GitHub repo code
+                git 'https://github.com/vstbg/jokes-api.git'
+            }
+        }
+
+        stage('UAT') {
+            steps {
+              // GitHub repo code
+              git 'https://github.com/vstbg/jokes-api.git'
+            }
+        }
+    }
+}
