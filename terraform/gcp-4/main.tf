@@ -48,3 +48,16 @@ module "vpc" {
     }
   ]
 }
+
+resource "google_compute_firewall" "tf-firewall-1" {
+  name = "tf-firewall"
+  network = "/projects/my-project/global/networks/tf-vpc-982777"
+
+  allow {
+    protocol = "tcp"
+    ports = ["80"]
+  }
+
+  source_tags = ["web"]
+  source_ranges = ["0.0.0.0/0"]
+}
