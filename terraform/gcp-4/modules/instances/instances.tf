@@ -28,7 +28,8 @@ resource "google_compute_instance" "tf-instance-2" {
         }
     }
     network_interface {
-      network = "default"
+      network = "tf-vpc-982777"
+      subnetwork = "subnet-01"
     }
     metadata_startup_script = <<-EOT
         #!/bin/bash
@@ -47,7 +48,8 @@ resource "google_compute_instance" "tf-instance-437000" {
         }
     }
     network_interface {
-      network = "default"
+      network = "tf-vpc-982777"
+      subnetwork = "subnet-02"
     }
     metadata_startup_script = <<-EOT
         #!/bin/bash
