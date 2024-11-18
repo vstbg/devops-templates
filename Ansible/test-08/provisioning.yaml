@@ -2,6 +2,8 @@
 - name: Provisioning Server 
   hosts: all
   become: yes
+  vars:
+    ntp_path: /etc/ntp.conf
   tasks:
     - name: Install NTP on Centos 
       yum:
@@ -76,7 +78,7 @@
     - name: Deploy NTP conf file for RedHat
       template:
          src: templates/ntp_redhat.conf.j2
-         dest: /etc/ntp.conf
+         dest: "{{ntp_path}}"
       when: ansible_os_family == "RedHat"
       notify:
         - Restart NTP on Redhat
@@ -86,7 +88,7 @@
     - name: Deploy NTP conf file for Debian
       template:
          src: templates/ntp_debian.conf.j2
-         dest: /etc/ntp.conf
+         dest: "{{ntp_path}}"
       when: ansible_os_family == "Debian"
       notify:
         - Restart NTP on Debian
@@ -100,6 +102,11 @@
         mode: 0775
       tags:
         - system
+
+    - name: Deploy dev data file
+      copy: 
+        src: files/dev.txt
+        dest: /opt/devdata/dev.txt
 
   handlers:  
     - name: Restart NTP on Redhat
